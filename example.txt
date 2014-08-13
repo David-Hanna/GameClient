@@ -1,1 +1,2 @@
 example file
+Testing a commit on the example file

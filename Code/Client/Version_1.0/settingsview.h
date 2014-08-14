@@ -1,12 +1,16 @@
 #ifndef SETTINGSVIEW_H
 #define SETTINGSVIEW_H
 
+#include "global.h"
 #include "settingsdata.h"
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QMessageBox>
 
 class SettingsView : public QWidget
 {
@@ -16,16 +20,27 @@ public:
     virtual ~SettingsView();
 
 private:
-    QVBoxLayout *layout;
-    QComboBox *resolutionSelector;
+    QLabel *fullScreenLabel;
     QCheckBox *fullScreenSelector;
+    QHBoxLayout *fullScreenLayout;
+
+    QLabel *windowSizeLabel;
+    QComboBox *windowSizeSelector;
+    QHBoxLayout *windowSizeLayout;
+
+    QPushButton *saveButton;
+    QPushButton *applyButton;
     QPushButton *backButton;
+
+    QVBoxLayout *verticalLayout;
 
 signals:
     void backButtonPressedSignal();
 
 private slots:
-    void setFullScreen(bool checked);
+    void fullScreenSelectorClickedSlot();
+    void saveButtonPressedSlot();
+    void applyButtonPressedSlot();
     void backButtonPressedSlot();
 
 };

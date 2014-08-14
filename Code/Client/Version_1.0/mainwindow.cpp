@@ -23,7 +23,7 @@ void MainWindow::showGame()
 {
     gameView = new GameView();
     setCentralWidget(gameView);
-    if (fullScreen)
+    if (SettingsData::fullScreen())
         showFullScreen();
     else
         showNormal();

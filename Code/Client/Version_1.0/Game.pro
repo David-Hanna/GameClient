@@ -16,14 +16,16 @@ SOURCES += main.cpp\
     mainmenu.cpp \
     gameview.cpp \
     settingsview.cpp \
-    settingsdata.cpp
+    settingsdata.cpp \
+    networkview.cpp
 
 HEADERS  += mainwindow.h \
     mainmenu.h \
     gameview.h \
     settingsview.h \
     settingsdata.h \
-    global.h
+    global.h \
+    networkview.h
 
 OTHER_FILES +=
 

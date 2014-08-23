@@ -3,6 +3,7 @@
 
 #include "mainmenu.h"
 #include "gameview.h"
+#include "networkview.h"
 #include "settingsview.h"
 #include "settingsdata.h"
 
@@ -18,12 +19,14 @@ public:
 
 private:
     MainMenu *mainMenu;
+    NetworkView *networkView;
     GameView *gameView;
     SettingsView *settingsView;
 
 private:
     void showMainMenu();
-    void showGame();
+    void showNetworkView();
+    void showSinglePlayerGame();
     void showSettings();
 
 private slots:

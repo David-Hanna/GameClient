@@ -23,7 +23,7 @@ void MainWindow::showMainMenu()
 
 void MainWindow::showGameSelectionView()
 {
-    gameSelectionView = new NetworkView;
+    gameSelectionView = new GameSelectionView;
     setCentralWidget(gameSelectionView);
     setWindowTitle("Networking Lobby");
 

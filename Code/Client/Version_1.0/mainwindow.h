@@ -19,7 +19,7 @@ public:
 
 private:
     MainMenu *mainMenu;
-    NetworkView *gameSelectionView;
+    GameSelectionView *gameSelectionView;
     GameView *gameView;
     SettingsView *settingsView;
 

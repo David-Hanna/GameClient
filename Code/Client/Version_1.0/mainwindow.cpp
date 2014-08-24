@@ -27,7 +27,7 @@ void MainWindow::showNetworkView()
     setCentralWidget(networkView);
     setWindowTitle("Networking Lobby");
 
-    connect (networkView, SIGNAL(playSinglePlayerGameButtonClickedSignal()), this, SLOT(showSinglePlayerGame()));
+    connect (networkView, SIGNAL(playSinglePlayerGameButtonClickedSignal()), this, SLOT(playSinglePlayerGameButtonClickedSlot()));
     connect (networkView, SIGNAL(returnToMainMenuButtonClickedSignal()), this, SLOT(backButtonPressedSlot()));
 }
 
@@ -38,10 +38,13 @@ void MainWindow::showSinglePlayerGame()
     setWindowTitle("UPEI Game");
 
     if (SettingsData::fullScreen())
+    {
         showFullScreen();
-
+    }
     else
+    {
         showNormal();
+    }
 }
 
 void MainWindow::showSettings()
@@ -61,6 +64,11 @@ void MainWindow::startGameButtonPressedSlot()
 void MainWindow::settingsButtonPressedSlot()
 {
     showSettings();
+}
+
+void MainWindow::playSinglePlayerGameButtonClickedSlot()
+{
+    showSinglePlayerGame();
 }
 
 void MainWindow::backButtonPressedSlot()

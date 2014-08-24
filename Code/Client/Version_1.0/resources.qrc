@@ -1,3 +1,19 @@
 <RCC>
-    <qresource prefix="/"/>
+    <qresource prefix="/images/tiles">
+        <file>tiles/CastleBlue1.png</file>
+        <file>tiles/CastleRed1.png</file>
+        <file>tiles/Hills1.png</file>
+        <file>tiles/Mountain1.png</file>
+        <file>tiles/Plains1.png</file>
+        <file>tiles/Water1.png</file>
+    </qresource>
+    <qresource prefix="/xmls/maps">
+        <file>TheHighlands.xml</file>
+    </qresource>
+    <qresource prefix="/xmls/manifests">
+        <file>MapsManifest.xml</file>
+    </qresource>
+    <qresource prefix="/xmls/tiles">
+        <file>Tiles.xml</file>
+    </qresource>
 </RCC>

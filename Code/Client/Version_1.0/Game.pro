@@ -17,7 +17,7 @@ SOURCES += main.cpp\
     gameview.cpp \
     settingsview.cpp \
     settingsdata.cpp \
-    networkview.cpp
+    gameselectionview.cpp
 
 HEADERS  += mainwindow.h \
     mainmenu.h \
@@ -25,7 +25,7 @@ HEADERS  += mainwindow.h \
     settingsview.h \
     settingsdata.h \
     global.h \
-    networkview.h
+    gameselectionview.h
 
 OTHER_FILES +=
 

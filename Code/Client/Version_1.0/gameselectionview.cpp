@@ -1,6 +1,6 @@
-#include "networkview.h"
+#include "gameselectionview.h"
 
-NetworkView::NetworkView(QWidget *parent) :
+GameSelectionView::GameSelectionView(QWidget *parent) :
     QWidget(parent)
 {
     welcomeLabel = new QLabel("Welcome, ");
@@ -37,37 +37,37 @@ NetworkView::NetworkView(QWidget *parent) :
     setLayout(verticalLayout);
 }
 
-NetworkView::~NetworkView()
+GameSelectionView::~GameSelectionView()
 {
     delete verticalLayout;
 }
 
-void NetworkView::logInOutButtonClickedSlot()
+void GameSelectionView::logInOutButtonClickedSlot()
 {
 
 }
 
-void NetworkView::playSinglePlayerGameButtonClickedSlot()
+void GameSelectionView::playSinglePlayerGameButtonClickedSlot()
 {
     emit playSinglePlayerGameButtonClickedSignal();
 }
 
-void NetworkView::playMultiPlayerGameButtonClickedSlot()
+void GameSelectionView::playMultiPlayerGameButtonClickedSlot()
 {
 
 }
 
-void NetworkView::seeMyProfileButtonClickedSlot()
+void GameSelectionView::seeMyProfileButtonClickedSlot()
 {
 
 }
 
-void NetworkView::returnToMainMenuButtonClickedSlot()
+void GameSelectionView::returnToMainMenuButtonClickedSlot()
 {
     emit returnToMainMenuButtonClickedSignal();
 }
 
-void NetworkView::connectionTestButtonClickedSlot()
+void GameSelectionView::connectionTestButtonClickedSlot()
 {
 
 }

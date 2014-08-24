@@ -21,14 +21,14 @@ void MainWindow::showMainMenu()
     connect (mainMenu, SIGNAL(settingsButtonPressedSignal()), this, SLOT(settingsButtonPressedSlot()));
 }
 
-void MainWindow::showNetworkView()
+void MainWindow::showGameSelectionView()
 {
-    networkView = new NetworkView;
-    setCentralWidget(networkView);
+    gameSelectionView = new NetworkView;
+    setCentralWidget(gameSelectionView);
     setWindowTitle("Networking Lobby");
 
-    connect (networkView, SIGNAL(playSinglePlayerGameButtonClickedSignal()), this, SLOT(playSinglePlayerGameButtonClickedSlot()));
-    connect (networkView, SIGNAL(returnToMainMenuButtonClickedSignal()), this, SLOT(backButtonPressedSlot()));
+    connect (gameSelectionView, SIGNAL(playSinglePlayerGameButtonClickedSignal()), this, SLOT(playSinglePlayerGameButtonClickedSlot()));
+    connect (gameSelectionView, SIGNAL(returnToMainMenuButtonClickedSignal()), this, SLOT(backButtonPressedSlot()));
 }
 
 void MainWindow::showSinglePlayerGame()
@@ -58,7 +58,7 @@ void MainWindow::showSettings()
 
 void MainWindow::startGameButtonPressedSlot()
 {
-    showNetworkView();
+    showGameSelectionView();
 }
 
 void MainWindow::settingsButtonPressedSlot()

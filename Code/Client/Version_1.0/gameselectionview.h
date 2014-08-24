@@ -10,12 +10,12 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-class NetworkView : public QWidget
+class GameSelectionView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit NetworkView(QWidget *parent = 0);
-    virtual ~NetworkView();
+    explicit GameSelectionView(QWidget *parent = 0);
+    virtual ~GameSelectionView();
 
 protected:
     QLabel *welcomeLabel;

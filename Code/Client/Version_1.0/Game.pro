@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     gameview.cpp \
     settingsview.cpp \
     settingsdata.cpp \
-    gameselectionview.cpp
+    gameselectionview.cpp \
+    global.cpp
 
 HEADERS  += mainwindow.h \
     mainmenu.h \
@@ -29,5 +30,4 @@ HEADERS  += mainwindow.h \
 
 OTHER_FILES +=
 
-RESOURCES += \
-    resources.qrc
+RESOURCES += resources.qrc

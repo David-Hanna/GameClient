@@ -3,32 +3,31 @@
 SettingsView::SettingsView(QWidget *parent) :
     QWidget(parent)
 {
-    fullScreenLabel = new QLabel("Full Screen: ");
+    fullScreenLabel = new QLabel(GameStrings::STRING["FullScreenLabel"]);
     fullScreenLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     fullScreenSelector = new QCheckBox;
-    fullScreenSelector->setChecked(SettingsData::fullScreen());
+    fullScreenSelector->setChecked(SettingsData::isFullScreen());
     fullScreenLayout = new QHBoxLayout;
     fullScreenLayout->addWidget(fullScreenLabel);
     fullScreenLayout->addWidget(fullScreenSelector);
 
-    windowSizeLabel = new QLabel("Screen Size: ");
+    windowSizeLabel = new QLabel(GameStrings::STRING["ScreenSizeLabel"]);
     windowSizeSelector = new QComboBox;
-    windowSizeSelector->addItem(WindowSizes::SIZE_1024x768);
-    windowSizeSelector->addItem(WindowSizes::SIZE_1280x960);
-    windowSizeSelector->addItem(WindowSizes::SIZE_1344x1008);
-    windowSizeSelector->addItem(WindowSizes::SIZE_1600x900);
-    windowSizeSelector->addItem(WindowSizes::SIZE_1600x1200);
-    windowSizeSelector->addItem(WindowSizes::SIZE_2048x1152);
-    windowSizeSelector->addItem(WindowSizes::SIZE_2560x1440);
-    windowSizeSelector->setCurrentIndex(windowSizeSelector->findText(SettingsData::windowSize()));
+
+    for (int i = 0; i < Config::WINDOW_SIZES.size(); i++)
+    {
+        windowSizeSelector->addItem(Config::WINDOW_SIZES[i]);
+    }
+
+    windowSizeSelector->setCurrentIndex(windowSizeSelector->findText(SettingsData::getWindowSize()));
     windowSizeSelector->setDisabled(fullScreenSelector->isChecked());
     windowSizeLayout = new QHBoxLayout;
     windowSizeLayout->addWidget(windowSizeLabel);
     windowSizeLayout->addWidget(windowSizeSelector);
 
-    saveButton = new QPushButton("Save");
-    applyButton = new QPushButton("Apply");
-    backButton = new QPushButton("Back to Main Menu");
+    saveButton = new QPushButton(GameStrings::STRING["Save"]);
+    applyButton = new QPushButton(GameStrings::STRING["Apply"]);
+    backButton = new QPushButton(GameStrings::STRING["ReturnToMainMenu"]);
 
     connect(fullScreenSelector, SIGNAL(clicked()), this, SLOT(fullScreenSelectorClickedSlot()));
     connect(saveButton, SIGNAL(clicked()), this, SLOT(saveButtonPressedSlot()));
@@ -50,6 +49,12 @@ SettingsView::~SettingsView()
     delete verticalLayout;
 }
 
+void SettingsView::setSettings()
+{
+    SettingsData::setFullScreen(fullScreenSelector->isChecked());
+    SettingsData::setWindowSize(windowSizeSelector->currentText());
+}
+
 void SettingsView::fullScreenSelectorClickedSlot()
 {
     windowSizeSelector->setDisabled(fullScreenSelector->isChecked());
@@ -57,18 +62,18 @@ void SettingsView::fullScreenSelectorClickedSlot()
 
 void SettingsView::saveButtonPressedSlot()
 {
-    SettingsData::setFullScreen(fullScreenSelector->isChecked());
-    SettingsData::setWindowSize(windowSizeSelector->currentText());
+    setSettings();
 
     QMessageBox box;
     if (SettingsData::writeSettings())
     {
-        box.setText ("Saved successfully.");
+        box.setText (GameStrings::STRING["SaveSuccessful"]);
         box.setIcon (QMessageBox::Information);
+        applyButtonPressedSlot();
     }
     else
     {
-        box.setText ("Save failed.");
+        box.setText (GameStrings::STRING["SaveFailed"]);
         box.setIcon (QMessageBox::Warning);
     }
     box.setDefaultButton(QMessageBox::Ok);
@@ -77,7 +82,8 @@ void SettingsView::saveButtonPressedSlot()
 
 void SettingsView::applyButtonPressedSlot()
 {
-    // TODO
+    setSettings();
+    emit applyButtonPressedSignal();
 }
 
 void SettingsView::backButtonPressedSlot()

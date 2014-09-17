@@ -3,29 +3,49 @@
 
 #include <QString>
 #include <QStandardPaths>
+#include <QDir>
+#include <QHash>
+#include <QFile>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
+#include <QDebug>
+#include <QVector>
 
 namespace FileStrings
 {
-    const QString SETTINGS_PATH = QString(QStandardPaths::DataLocation);
+    extern const QString SETTINGS_PATH;
+    const QString GAME_STRINGS_PATH = QString(":/xmls/strings/strings.xml");
+    const QString MENU_CONFIG_PATH = QString(":/xmls/config/MenuConfig.xml");
 }
 
 namespace XMLStrings
 {
     const QString SETTINGS_NODE = QString("Settings");
     const QString FULLSCREEN_NODE = QString("FullScreen");
+    const QString WINDOW_SIZES_NODE = QString("WindowSizes");
     const QString WINDOW_SIZE_NODE = QString("WindowSize");
+    const QString STRING_NODE = QString("string");
+
     const QString VALUE_ATTRIBUTE = QString("value");
+    const QString ID_ATTRIBUTE = QString("id");
+    const QString WIDTH_ATTRIBUTE = QString("width");
+    const QString HEIGHT_ATTRIBUTE = QString("height");
 }
 
-namespace WindowSizes
+namespace GameStrings
 {
-    const QString SIZE_1024x768 = QString("1024x768");
-    const QString SIZE_1280x960 = QString("1280x960");
-    const QString SIZE_1344x1008 = QString("1344x1008");
-    const QString SIZE_1600x900 = QString("1600x900");
-    const QString SIZE_1600x1200 = QString("1600x1200");
-    const QString SIZE_2048x1152 = QString("2048x1152");
-    const QString SIZE_2560x1440 = QString("2560x1440");
+    extern const QHash<QString, QString> STRING;
+}
+
+namespace Config
+{
+    extern const QVector<QString> WINDOW_SIZES;
+}
+
+namespace Offsets
+{
+    const int MENU_BUTTON_HORIZONTAL_OFFSET = 10;
+    const int MENU_BUTTON_VERTICAL_OFFSET = 10;
 }
 
 #endif // GLOBAL_H

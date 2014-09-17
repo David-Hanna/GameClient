@@ -3,6 +3,7 @@
 
 #include "global.h"
 #include "settingsdata.h"
+
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -34,8 +35,11 @@ private:
 
     QVBoxLayout *verticalLayout;
 
+    void setSettings();
+
 signals:
     void backButtonPressedSignal();
+    void applyButtonPressedSignal();
 
 private slots:
     void fullScreenSelectorClickedSlot();

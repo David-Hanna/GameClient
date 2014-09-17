@@ -1,0 +1,17 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/mainmenu.o
+./debug/gameview.o
+./debug/settingsview.o
+./debug/settingsdata.o
+./debug/gameselectionview.o
+./debug/global.o
+./debug/qrc_resources.o
+./debug/moc_mainwindow.o
+./debug/moc_mainmenu.o
+./debug/moc_gameview.o
+./debug/moc_settingsview.o
+./debug/moc_settingsdata.o
+./debug/moc_gameselectionview.o
+);

@@ -1,0 +1,21 @@
+<strings>
+    <string id="PlaySinglePlayerMode">Play Single Player Mode</string>
+    <string id="PlayMultiPlayerMode">Play Multi Player Mode</string>
+    <string id="ReturnToMainMenu">Return to Main Menu</string>
+    <string id="Welcome">Welcome, </string>
+    <string id="LogIn">Log In</string>
+    <string id="StartGame">Start Game</string>
+    <string id="ViewMyProfile">View My Profile</string>
+    <string id="Settings">Settings</string>
+    <string id="Exit">Exit</string>
+    <string id="ConnectionTest">Connection Test</string>
+    <string id="MainMenu">Main Menu</string>
+    <string id="NetworkingLobby">Networking Lobby</string>
+    <string id="GameTitle">UPEI Game</string>
+    <string id="FullScreenLabel">Full Screen: </string>
+    <string id="ScreenSizeLabel">Screen Size: </string>
+    <string id="Save">Save</string>
+    <string id="Apply">Apply</string>
+    <string id="SaveSuccessful">Saved Successfully</string>
+    <string id="SaveFailed">Save Failed</string>
+</strings>

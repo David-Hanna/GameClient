@@ -3,19 +3,32 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    setSize();
     showMainMenu();
-    resize(400, 400);
 }
 
 MainWindow::~MainWindow()
 {
 }
 
+void MainWindow::setSize()
+{
+    if (SettingsData::isFullScreen())
+    {
+        showFullScreen();
+    }
+    else
+    {
+        showNormal();
+        resize(SettingsData::getWindowWidth(), SettingsData::getWindowHeight());
+    }
+}
+
 void MainWindow::showMainMenu()
 {
-    mainMenu = new MainMenu();
+    mainMenu = new MainMenu(this);
     setCentralWidget(mainMenu);
-    setWindowTitle("Main Menu");
+    setWindowTitle(GameStrings::STRING["MainMenu"]);
 
     connect (mainMenu, SIGNAL(startGameButtonPressedSignal()), this, SLOT(startGameButtonPressedSlot()));
     connect (mainMenu, SIGNAL(settingsButtonPressedSignal()), this, SLOT(settingsButtonPressedSlot()));
@@ -23,9 +36,9 @@ void MainWindow::showMainMenu()
 
 void MainWindow::showGameSelectionView()
 {
-    gameSelectionView = new GameSelectionView;
+    gameSelectionView = new GameSelectionView(this);
     setCentralWidget(gameSelectionView);
-    setWindowTitle("Networking Lobby");
+    setWindowTitle(GameStrings::STRING["NetworkingLobby"]);
 
     connect (gameSelectionView, SIGNAL(playSinglePlayerGameButtonClickedSignal()), this, SLOT(playSinglePlayerGameButtonClickedSlot()));
     connect (gameSelectionView, SIGNAL(returnToMainMenuButtonClickedSignal()), this, SLOT(backButtonPressedSlot()));
@@ -33,27 +46,19 @@ void MainWindow::showGameSelectionView()
 
 void MainWindow::showSinglePlayerGame()
 {
-    gameView = new GameView;
+    gameView = new GameView(this);
     setCentralWidget(gameView);
-    setWindowTitle("UPEI Game");
-
-    if (SettingsData::fullScreen())
-    {
-        showFullScreen();
-    }
-    else
-    {
-        showNormal();
-    }
+    setWindowTitle(GameStrings::STRING["GameTitle"]);
 }
 
 void MainWindow::showSettings()
 {
     settingsView = new SettingsView();
     setCentralWidget(settingsView);
-    setWindowTitle("Settings");
+    setWindowTitle(GameStrings::STRING["Settings"]);
 
     connect (settingsView, SIGNAL(backButtonPressedSignal()), this, SLOT(backButtonPressedSlot()));
+    connect (settingsView, SIGNAL(applyButtonPressedSignal()), this, SLOT(applyButtonPressedSlot()));
 }
 
 void MainWindow::startGameButtonPressedSlot()
@@ -74,4 +79,9 @@ void MainWindow::playSinglePlayerGameButtonClickedSlot()
 void MainWindow::backButtonPressedSlot()
 {
     showMainMenu();
+}
+
+void MainWindow::applyButtonPressedSlot()
+{
+    setSize();
 }

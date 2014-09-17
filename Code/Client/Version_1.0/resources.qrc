@@ -16,4 +16,10 @@
     <qresource prefix="/xmls/tiles">
         <file>Tiles.xml</file>
     </qresource>
+    <qresource prefix="/xmls/config">
+        <file>MenuConfig.xml</file>
+    </qresource>
+    <qresource prefix="/xmls/strings">
+        <file>strings.xml</file>
+    </qresource>
 </RCC>

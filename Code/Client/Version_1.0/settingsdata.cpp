@@ -1,7 +1,8 @@
 #include "settingsdata.h"
 
-bool SettingsData::mFullScreen = false;
-QString SettingsData::mWindowSize = QString("1024x768");
+bool SettingsData::fullScreen = false;
+int SettingsData::windowWidth = 1024;
+int SettingsData::windowHeight = 768;
 
 void SettingsData::readSettings()
 {
@@ -25,7 +26,7 @@ void SettingsData::readSettings()
                     {
                         if (attributes.value(XMLStrings::VALUE_ATTRIBUTE).toInt())
                         {
-                            mFullScreen = true;
+                            fullScreen = true;
                         }
                     }
                 }
@@ -34,13 +35,18 @@ void SettingsData::readSettings()
                     QXmlStreamAttributes attributes = in.attributes();
                     if (attributes.hasAttribute(XMLStrings::VALUE_ATTRIBUTE))
                     {
-                        mWindowSize = attributes.value(XMLStrings::VALUE_ATTRIBUTE).toString();
+                        setWindowSize(attributes.value(XMLStrings::VALUE_ATTRIBUTE).toString());
                     }
                 }
             }
         }
     }
-    else qWarning() << "WARNING: Failed to read settings (first time player?): " << settingsFile.errorString();
+    else
+    {
+        qWarning() << "WARNING: Failed to read settings ("
+                   << FileStrings::SETTINGS_PATH << "): "
+                   << settingsFile.errorString();
+    }
 }
 
 bool SettingsData::writeSettings()
@@ -53,11 +59,11 @@ bool SettingsData::writeSettings()
         out.writeStartElement(XMLStrings::SETTINGS_NODE);
 
         out.writeStartElement(XMLStrings::WINDOW_SIZE_NODE);
-        out.writeAttribute(XMLStrings::VALUE_ATTRIBUTE, mWindowSize);
+        out.writeAttribute(XMLStrings::VALUE_ATTRIBUTE, getWindowSize());
         out.writeEndElement();
 
         out.writeStartElement(XMLStrings::FULLSCREEN_NODE);
-        out.writeAttribute(XMLStrings::VALUE_ATTRIBUTE, QString::number(mFullScreen));
+        out.writeAttribute(XMLStrings::VALUE_ATTRIBUTE, QString::number(fullScreen));
         out.writeEndElement();
 
         out.writeEndElement();
@@ -65,25 +71,50 @@ bool SettingsData::writeSettings()
 
         return true;
     }
+    qWarning() << "WARNING: Failed to write settings ("
+               << FileStrings::SETTINGS_PATH << "): "
+               << settingsFile.errorString();
     return false;
 }
 
-bool SettingsData::fullScreen()
+bool SettingsData::isFullScreen()
 {
-    return mFullScreen;
+    return fullScreen;
 }
 
-QString SettingsData::windowSize()
+QString SettingsData::getWindowSize()
 {
-    return mWindowSize;
+    return QString::number(windowWidth).append("x").append(QString::number(windowHeight));
+}
+
+int SettingsData::getWindowWidth()
+{
+    return windowWidth;
+}
+
+int SettingsData::getWindowHeight()
+{
+    return windowHeight;
 }
 
 void SettingsData::setFullScreen(bool pFullScreen)
 {
-    mFullScreen = pFullScreen;
+    fullScreen = pFullScreen;
 }
 
 void SettingsData::setWindowSize(QString pWindowSize)
 {
-    mWindowSize = pWindowSize;
+    QStringList windowSize = pWindowSize.split("x");
+    windowWidth = windowSize[0].toInt();
+    windowHeight = windowSize[1].toInt();
+}
+
+void SettingsData::setWindowWidth(int pWindowWidth)
+{
+    windowWidth = pWindowWidth;
+}
+
+void SettingsData::setWindowHeight(int pWindowHeight)
+{
+    windowHeight = pWindowHeight;
 }

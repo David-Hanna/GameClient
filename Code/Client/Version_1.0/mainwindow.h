@@ -24,6 +24,7 @@ private:
     SettingsView *settingsView;
 
 private:
+    void setSize();
     void showMainMenu();
     void showGameSelectionView();
     void showSinglePlayerGame();
@@ -34,6 +35,7 @@ private slots:
     void playSinglePlayerGameButtonClickedSlot();
     void settingsButtonPressedSlot();
     void backButtonPressedSlot();
+    void applyButtonPressedSlot();
 };
 
 #endif // MAINWINDOW_H

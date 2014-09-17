@@ -17,32 +17,21 @@ public:
     explicit GameSelectionView(QWidget *parent = 0);
     virtual ~GameSelectionView();
 
-protected:
-    QLabel *welcomeLabel;
-    QPushButton *logInOutButton;
-    QHBoxLayout *welcomeAndLogInOutLayout;
-
+private:
     QPushButton *playSinglePlayerGameButton;
     QPushButton *playMultiPlayerGameButton;
-    QPushButton *seeMyProfileButton;
     QPushButton *returnToMainMenuButton;
 
-    QPushButton *connectionTestButton;
-    QHBoxLayout *connectionTestLayout;
-
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *topLayout;
 
 signals:
     void playSinglePlayerGameButtonClickedSignal();
     void returnToMainMenuButtonClickedSignal();
 
 private slots:
-    void logInOutButtonClickedSlot();
     void playSinglePlayerGameButtonClickedSlot();
     void playMultiPlayerGameButtonClickedSlot();
-    void seeMyProfileButtonClickedSlot();
     void returnToMainMenuButtonClickedSlot();
-    void connectionTestButtonClickedSlot();
 };
 
 #endif // NETWORKVIEW_H

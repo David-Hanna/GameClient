@@ -1,0 +1,17 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/mainmenu.o
+./release/gameview.o
+./release/settingsview.o
+./release/settingsdata.o
+./release/gameselectionview.o
+./release/global.o
+./release/qrc_resources.o
+./release/moc_mainwindow.o
+./release/moc_mainmenu.o
+./release/moc_gameview.o
+./release/moc_settingsview.o
+./release/moc_settingsdata.o
+./release/moc_gameselectionview.o
+);

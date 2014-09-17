@@ -1,0 +1,9 @@
+<MenuConfig>
+    <WindowSizes>
+        <WindowSize width="450" height="300"/>
+        <WindowSize width="600" height="400"/>
+        <WindowSize width="750" height="500"/>
+        <WindowSize width="900" height="600"/>
+        <WindowSize width="1050" height="700"/>
+    </WindowSizes>
+</MenuConfig>
